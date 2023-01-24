@@ -47,3 +47,12 @@ The following is required for your assignment to be graded:
 | Authenticated users are redirected to the other page from the home page        | 1      |
 | Unauthenticated users are redirected back to the home page from the other page | 1      |
 
+# Stretch:
+
+current logged in user can see a list of journal entries
+-form with textarea and submit
+-loop through list of journal entries and display entries WHERE user_id matches current user
+
+# Stretch Senior:
+
+-emoji picker npm
