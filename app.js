@@ -1,4 +1,4 @@
-import { signupUser } from './fetch-utils.js';
+import { signupUser, getUser, redirectIfLoggedIn } from './fetch-utils.js';
 
 const signInForm = document.getElementById('sign-in');
 
@@ -14,5 +14,16 @@ signUpForm.addEventListener('submit', async (e) => {
 
     await signupUser(email, password);
     // Redirect to /other-page on successful auth
+    redirect();
 });
+
+async function redirect() {
+    // if auth
+    const user = await getUser();
+    if (user) {
+        redirectIfLoggedIn();
+    }
+}
+
+redirect();
 // Redirect to /other-page when page loads if user is authenticated
