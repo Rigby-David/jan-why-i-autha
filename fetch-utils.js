@@ -10,8 +10,8 @@ export function getUser() {
 }
 
 export async function signupUser(email, password) {
-    const response = await client.from('users').insert({ email: email, password: password });
-    return response;
+    const response = await client.auth.signUp({ email: email, password: password });
+    return response.user;
 }
 
 export async function signInUser(email, password) {}
