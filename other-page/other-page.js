@@ -16,14 +16,16 @@ logoutBtn.addEventListener('click', async () => {
 //submit form event listener
 journalForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    textInputEl.value = '';
 
     const formData = new FormData(journalForm);
     const entryData = formData.get('text');
 
-    const whatever = await createJournalEntry(entryData);
+    textInputEl.value = '';
+    await createJournalEntry(entryData);
 
-    journalEntriesArray = whatever;
+    const fetchJournalEntires = await getJournalEntries();
+    journalEntriesArray = fetchJournalEntires.data;
+    console.log('journalEntriesArray', journalEntriesArray);
 });
 
 //put journal entries into state array
