@@ -16,13 +16,15 @@ export async function signupUser(email, password) {
 
 export async function signInUser(email, password) {}
 
-export async function checkAuth() {}
+export async function checkAuth() {
+    if (!getUser()) {
+        location.replace('../');
+    }
+}
 
 export async function redirectIfLoggedIn() {
     if (getUser()) {
         location.replace('./other-page');
-    } else {
-        location.replace('/');
     }
 }
 
