@@ -1,6 +1,6 @@
 // use checkAuth function to redirect is user not authenticated
 
-import { checkAuth, logout, createJournalEntry, getJournalEntries } from '../fetch-utils.js';
+import { getUser, logout, createJournalEntry, getJournalEntries } from '../fetch-utils.js';
 
 const logoutBtn = document.getElementById('logout');
 const journalForm = document.querySelector('.journal-form');
@@ -20,10 +20,12 @@ journalForm.addEventListener('submit', async (e) => {
     const formData = new FormData(journalForm);
     const entryData = formData.get('text');
 
-    textInputEl.value = '';
-    await createJournalEntry(entryData);
+    const id = await getUser().id;
 
-    const fetchJournalEntires = await getJournalEntries();
+    textInputEl.value = '';
+    await createJournalEntry(entryData, id);
+
+    const fetchJournalEntires = await getJournalEntries(id);
     journalEntriesArray = fetchJournalEntires.data;
     console.log('journalEntriesArray', journalEntriesArray);
 });
@@ -31,5 +33,3 @@ journalForm.addEventListener('submit', async (e) => {
 //put journal entries into state array
 //call display/render journal entries
 //loop through entries array
-
-checkAuth();

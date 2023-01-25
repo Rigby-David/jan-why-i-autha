@@ -9,14 +9,16 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 // export async function getJournalEntriesById(id) {}
 // create
 
-export async function createJournalEntry(entry) {
-    const response = await client.from('january_journal').insert([{ journal_entry: entry }]);
+export async function createJournalEntry(entry, id) {
+    const response = await client
+        .from('january_journal')
+        .insert([{ journal_entry: entry, user_id: id }]);
     return response;
 }
 
 //read
-export async function getJournalEntries() {
-    const response = await client.from('january_journal').select('*');
+export async function getJournalEntries(id) {
+    const response = await client.from('january_journal').select('*').eq('user_id', id);
     return response;
 }
 
