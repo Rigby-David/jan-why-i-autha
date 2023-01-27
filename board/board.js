@@ -1,4 +1,4 @@
-import { checkAuth, getPosts, logout } from '../fetch-utils.js';
+import { checkAuth, getPosts, getUser, logout } from '../fetch-utils.js';
 
 import { renderPost } from '../render-utils.js';
 
@@ -6,6 +6,12 @@ const bulletinBoardEl = document.querySelector('.bulletin-board-container');
 const bulletinBoardButtonEl = document.getElementById('bulletin-board-nav');
 const logoutEl = document.getElementById('logout');
 const journalEl = document.getElementById('journal-nav');
+const greetingEl = document.querySelector('.greeting');
+
+window.addEventListener('load', async () => {
+    const user = await getUser();
+    greetingEl.textContent = `Greetings ${user.email}! Welcome to the`;
+});
 
 journalEl.addEventListener('click', () => {
     window.location.replace('../other-page');

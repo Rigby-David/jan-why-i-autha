@@ -1,9 +1,15 @@
-import { checkAuth, createPost, logout } from '../fetch-utils.js';
+import { checkAuth, createPost, getUser, logout } from '../fetch-utils.js';
 
 const bulletinBoardForm = document.querySelector('.bulletin-board-form');
 const bulletinBoardNavButton = document.getElementById('bulletin-board-nav');
 const logoutEl = document.getElementById('logout');
 const journalEl = document.getElementById('journal-nav');
+const greetingEl = document.querySelector('.greeting');
+
+window.addEventListener('load', async () => {
+    const user = await getUser();
+    greetingEl.textContent = `Greetings ${user.email}! Let's`;
+});
 
 journalEl.addEventListener('click', () => {
     window.location.replace('../other-page');

@@ -14,6 +14,12 @@ const journalForm = document.querySelector('.journal-form');
 const textInputEl = document.querySelector('.text-input');
 const journalContainerEl = document.querySelector('.journal-container');
 const bulletinBoardButtonEl = document.getElementById('bulletin-board-nav');
+const greetingEl = document.querySelector('.greeting');
+
+window.addEventListener('load', async () => {
+    const user = await getUser();
+    greetingEl.textContent = `Greetings ${user.email}! Welcome to your`;
+});
 
 let journalEntriesArray = [];
 
