@@ -111,3 +111,17 @@ form div {
 .form-instructions {
     font-style: italic;
 }
+
+.bulletin-board-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.post {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
