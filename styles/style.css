@@ -54,10 +54,24 @@ section {
 
 header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
     background-color: var(--color3);
     height: var(--header-height);
     box-shadow: var(--shadow);
+    margin-right: 5px;
+}
+
+header button {
+    margin: 5px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+header button:hover {
+    cursor: pointer;
+    background-color: rgb(150, 157, 157);
+    transition: .3s;
 }
 
 h2 {
@@ -65,13 +79,13 @@ h2 {
     font-weight: bold;
 }
 
-.gutter-right {
+/* .gutter-right {
     margin-right: 20px;
-}
+} */
 
-header img {
+/* header img {
     height: var(--header-height);
-}
+} */
 
 p {
     margin: var(--gutter);
