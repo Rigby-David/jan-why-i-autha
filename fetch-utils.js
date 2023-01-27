@@ -58,7 +58,7 @@ export async function checkAuth() {
 
 export async function redirectIfLoggedIn() {
     if (getUser()) {
-        location.replace('./other-page');
+        location.replace('./board');
     }
 }
 

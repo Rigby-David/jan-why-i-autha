@@ -1,10 +1,25 @@
-import { getPosts } from '../fetch-utils.js';
+import { checkAuth, getPosts, logout } from '../fetch-utils.js';
 
 import { renderPost } from '../render-utils.js';
 
 const bulletinBoardEl = document.querySelector('.bulletin-board-container');
+const bulletinBoardButtonEl = document.getElementById('bulletin-board-nav');
+const logoutEl = document.getElementById('logout');
+const journalEl = document.getElementById('journal-nav');
+
+journalEl.addEventListener('click', () => {
+    window.location.replace('../other-page');
+});
+
+logoutEl.addEventListener('click', async () => {
+    await logout();
+});
 
 let posts = [];
+
+bulletinBoardButtonEl.addEventListener('click', () => {
+    window.location.replace('../create-post');
+});
 
 window.addEventListener('load', async () => {
     //get posts onLoad
@@ -22,5 +37,7 @@ function displayPosts() {
         bulletinBoardEl.append(postEl);
     });
 }
+
+checkAuth();
 
 //displayPosts loops through posts and calls renderPosts
