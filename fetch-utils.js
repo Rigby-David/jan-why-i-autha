@@ -25,6 +25,11 @@ export async function getPosts() {
     return data;
 }
 
+export async function getPostById(id) {
+    const { data } = await client.from('posts').select('*').match({ id: id }).single();
+    return data;
+}
+
 export async function getJournalEntries(id) {
     const response = await client.from('january_journal').select('*').eq('user_id', id);
     return response;
