@@ -13,12 +13,27 @@ export function renderPost(post) {
     const p = document.createElement('p');
     const h3 = document.createElement('h3');
     const p1 = document.createElement('p');
+    const button = document.createElement('button');
+
+    button.addEventListener('click', () => {
+        window.location.replace(`../detail/?id=${post.id}`);
+    });
 
     div.classList.add('post');
+    button.textContent = 'Comment';
     h3.textContent = post.title;
     p.textContent = post.description;
     p1.textContent = post.contact;
 
-    div.append(h3, p, p1);
+    if (window.location.pathname === '/detail/') {
+        div.append(h3, p, p1);
+    } else {
+        div.append(h3, p, p1, button);
+    }
+
     return div;
 }
+
+// export function renderComment() {
+
+// }
