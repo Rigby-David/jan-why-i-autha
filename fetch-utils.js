@@ -35,6 +35,12 @@ export async function getJournalEntries(id) {
     return response;
 }
 
+export async function getCommentsById(id) {
+    const { data } = await client.from('comments').select('*').eq('posts_id', id);
+
+    return data;
+}
+
 // update
 
 // delete
