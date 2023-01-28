@@ -1,0 +1,14 @@
+.auth-main {
+    color: white;
+}
+
+h1,
+h2,
+p {
+    color: rgb(238, 238, 238);
+}
+
+#sign-in {
+    padding: 30px;
+    margin-bottom: 40px;
+}
